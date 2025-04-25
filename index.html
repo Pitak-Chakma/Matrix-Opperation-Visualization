@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vector Playground</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dat.gui@0.7.7/build/dat.gui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjs@11.0.1/lib/browser/math.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Vector Playground</h1>
+        <div class="view-toggle">
+            <button id="view3d" class="active">3D View</button>
+            <button id="view2d">2D View</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="canvas-container">
+                <canvas id="renderCanvas"></canvas>
+                <div class="axis-labels">
+                    <div class="x-axis">X</div>
+                    <div class="y-axis">Y</div>
+                    <div class="z-axis">Z</div>
+                </div>
+            </div>
+            
+            <div class="controls-panel">
+                <div class="panel-section">
+                    <h2>Vector Operations</h2>
+                    <div class="operation-buttons">
+                        <button id="addVectors">Addition</button>
+                        <button id="subtractVectors">Subtraction</button>
+                        <button id="scaleVector">Scaling</button>
+                        <button id="dotProduct">Dot Product</button>
+                        <button id="crossProduct">Cross Product</button>
+                        <button id="resetVectors">Reset</button>
+                    </div>
+                </div>
+                
+                <div class="panel-section">
+                    <h2>Vector Inputs</h2>
+                    <div class="vector-inputs">
+                        <div class="vector-input">
+                            <h3>Vector A</h3>
+                            <div class="input-group">
+                                <label for="vectorAx">X:</label>
+                                <input type="number" id="vectorAx" value="1" step="0.1">
+                            </div>
+                            <div class="input-group">
+                                <label for="vectorAy">Y:</label>
+                                <input type="number" id="vectorAy" value="0" step="0.1">
+                            </div>
+                            <div class="input-group">
+                                <label for="vectorAz">Z:</label>
+                                <input type="number" id="vectorAz" value="0" step="0.1">
+                            </div>
+                            <div class="color-indicator vector-a-color"></div>
+                        </div>
+                        
+                        <div class="vector-input">
+                            <h3>Vector B</h3>
+                            <div class="input-group">
+                                <label for="vectorBx">X:</label>
+                                <input type="number" id="vectorBx" value="0" step="0.1">
+                            </div>
+                            <div class="input-group">
+                                <label for="vectorBy">Y:</label>
+                                <input type="number" id="vectorBy" value="1" step="0.1">
+                            </div>
+                            <div class="input-group">
+                                <label for="vectorBz">Z:</label>
+                                <input type="number" id="vectorBz" value="0" step="0.1">
+                            </div>
+                            <div class="color-indicator vector-b-color"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel-section">
+                    <h2>Results</h2>
+                    <div id="result-display">
+                        <div id="operation-name">Current Operation: None</div>
+                        <div id="result-value">No result yet</div>
+                    </div>
+                </div>
+                
+                <div class="panel-section">
+                    <h2>Scale Factor</h2>
+                    <div class="scale-factor">
+                        <input type="range" id="scaleFactor" min="0" max="3" step="0.1" value="1">
+                        <div class="scale-value">
+                            <span id="scaleValue">1.0</span>
+                        </div>
+                        <select id="scaleVectorSelect">
+                            <option value="A">Scale Vector A</option>
+                            <option value="B">Scale Vector B</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Vector Playground - An Interactive 2D/3D Vector Visualization Tool</p>
+    </footer>
+
+    <script src="js/vector-operations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

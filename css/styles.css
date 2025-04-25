@@ -1,0 +1,328 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary-color: #4a6cff;
+    --secondary-color: #59c3ff;
+    --accent-color: #7a30cf;
+    --background-color: #f8f9fa;
+    --panel-color: #ffffff;
+    --text-color: #333333;
+    --vector-a-color: #ff5252;
+    --vector-b-color: #2196f3;
+    --result-vector-color: #4caf50;
+    --border-color: #e0e0e0;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+main {
+    flex: 1;
+    padding: 2rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--text-color);
+    color: white;
+    font-size: 0.9rem;
+}
+
+/* Container Layout */
+.container {
+    display: flex;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: calc(100vh - 180px);
+}
+
+.canvas-container {
+    flex: 2;
+    background-color: var(--panel-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.controls-panel {
+    flex: 1;
+    background-color: var(--panel-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    overflow-y: auto;
+    min-width: 300px;
+    max-width: 400px;
+}
+
+/* Canvas */
+#renderCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.axis-labels {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 15px;
+}
+
+.axis-labels div {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.x-axis {
+    background-color: rgba(255, 0, 0, 0.7);
+    color: white;
+}
+
+.y-axis {
+    background-color: rgba(0, 255, 0, 0.7);
+    color: var(--text-color);
+}
+
+.z-axis {
+    background-color: rgba(0, 0, 255, 0.7);
+    color: white;
+}
+
+/* Panel Sections */
+.panel-section {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+}
+
+.panel-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.panel-section h2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+/* Operation Buttons */
+.operation-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.operation-buttons button {
+    background-color: var(--panel-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.operation-buttons button:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.operation-buttons button.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Vector Inputs */
+.vector-inputs {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.vector-input {
+    flex: 1;
+    min-width: 120px;
+    position: relative;
+}
+
+.vector-input h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.input-group label {
+    width: 25px;
+    font-weight: 500;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.color-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.vector-a-color {
+    background-color: var(--vector-a-color);
+}
+
+.vector-b-color {
+    background-color: var(--vector-b-color);
+}
+
+/* Result Display */
+#result-display {
+    background-color: var(--background-color);
+    padding: 1rem;
+    border-radius: 6px;
+    margin-top: 0.5rem;
+}
+
+#operation-name {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+#result-value {
+    font-family: monospace;
+    word-break: break-all;
+}
+
+/* Scale Factor */
+.scale-factor {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#scaleFactor {
+    width: 100%;
+    cursor: pointer;
+}
+
+.scale-value {
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+}
+
+#scaleVectorSelect {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* View Toggle */
+.view-toggle {
+    display: flex;
+    gap: 10px;
+}
+
+.view-toggle button {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    padding: 0.4rem 0.8rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.view-toggle button.active {
+    background-color: rgba(255, 255, 255, 0.4);
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 960px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .canvas-container {
+        height: 50vh;
+    }
+    
+    .controls-panel {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 1rem;
+    }
+    
+    main {
+        padding: 1rem;
+    }
+    
+    .operation-buttons {
+        grid-template-columns: 1fr;
+    }
+}
